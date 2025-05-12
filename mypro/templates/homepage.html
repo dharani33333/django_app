@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+</head>
+<body>
+
+    <h1>ToDo List</h1>
+
+    
+    <div class="task_input_box">
+        <input type="text" placeholder="Enter a new task..." />
+        <button>Add Task</button>
+    </div>
+
+    <div class="task_container">
+        {% for task in tasks %}
+        <div class="task_obj {{task.status}}">
+            <span class="task_text">{{ task.task_name }} -  {{task.created_date}} - {{task.assigned_to.username  }}
+
+            </span>
+            <div class="task_actions">
+                <button title="Edit">✏️</button>
+                <button title="Delete">🗑️</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
